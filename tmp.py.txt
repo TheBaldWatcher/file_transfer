@@ -1,0 +1,15 @@
+import http.server
+import socketserver
+ 
+# 设置默认编码为UTF-8
+http.server.SimpleHTTPRequestHandler.default_headers = [
+    ('Content-Type', 'text/html; charset=utf-8'),
+]
+ 
+# 创建HTTP服务器实例，指定服务器根目录和端口
+PORT = 8000
+httpd = socketserver.TCPServer(("", PORT), http.server.SimpleHTTPRequestHandler)
+ 
+# 启动服务器
+print(f"Serving at port {PORT}...")
+httpd.serve_forever()
